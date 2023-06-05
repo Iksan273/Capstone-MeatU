@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MeatUApp</string>
     <string name="deskripsi_MeatU">Daging adalah komponen penting dalam banyak masakan di seluruh dunia, namun memastikan kesegarannya adalah hal yang sangat penting. Aplikasi kami di buat untuk mengecek kesegaran daging dan hadir untuk memastikan kualitas daging yang anda konsumsi. dengan aplikasi ini anda dapat dengan mudah memeriksa keaslian dan dan kesegaran daging sebelum membelinya hanya dengan memfoto daging tersebut. dengan fitur ini anda tidak perlu lagi khawatir tentang kesegaran dan kualitas daging yang  anda beli</string>
+    <string name="tvEmail">Email</string>
+    <string name="btnLogin">LOGIN</string>
+    <string name="tvToregisterpage">Doesnt have account?</string>
+    <string name="btnRegister">REGISTER</string>
+    <string name="tvTologinpage">Already have account?</string>
 </resources>

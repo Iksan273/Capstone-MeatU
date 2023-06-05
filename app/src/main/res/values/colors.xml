@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red_navigation">#5F0706</color>
+    <color name="red_button">#85182B</color>
 </resources>
