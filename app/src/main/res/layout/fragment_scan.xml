@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScanFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ScanActivity">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="299dp"
+            android:layout_height="206dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="71dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.241"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/btncam"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:backgroundTint="@color/design_default_color_error"
+            android:drawableLeft="@drawable/baseline_camera_alt_24"
+            android:text="Camera"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="318dp" />
+
+        <Button
+            android:id="@+id/btnGallery"
+            android:layout_width="146dp"
+            android:layout_height="65dp"
+            android:backgroundTint="@color/design_default_color_error"
+            android:drawableLeft="@drawable/baseline_image_24"
+            android:text="Gallery"
+            tools:layout_editor_absoluteX="216dp"
+            tools:layout_editor_absoluteY="318dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="210dp"
+            android:layout_height="54dp"
+            android:backgroundTint="@color/design_default_color_error"
+            android:text="Analyze"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="418dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
