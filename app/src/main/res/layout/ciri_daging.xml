@@ -3,8 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="#85182B"
-    app:cardCornerRadius="25dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardElevation="20dp"
     app:contentPadding="15dp">
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="Judul"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="Deskripsi"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
     </LinearLayout>
