@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, json
 from flask_sqlalchemy import SQLAlchemy
-from flask_mysqldb import MySQL
+import pymysql
 import bcrypt
 from flask_marshmallow import Marshmallow
 from config import MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB
@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 #configure connection Mysql
-db = MySQL.connect(
+db = pymysql.connect(
     host = MYSQL_HOST,
     user =  MYSQL_USER,
     password = MYSQL_PASSWORD,
@@ -49,7 +49,7 @@ def login():
     password = data['password']
 
     cursor = db.cursor()    
-    query = "SELECT * FROM users WHERE email=%s"
+    query = "SELECT * FROM users WHERE email=%s AND password=%s"
     cursor.execute(query, (email,))
     user = cursor.fetchone()
 
@@ -64,32 +64,6 @@ def login():
         'email': user[4]
     }
     return jsonify(user_data), 200
-
-@app.route('/register', methods=['POST'])
-def register():
-    data = request.get_json()
-    nama = data['nama']
-    email = data['email']
-    password = data['password']
-
-    # Mengecek apakah email sudah terdaftar
-    cursor = db.cursor()
-    query = "SELECT * FROM users WHERE email=%s"
-    cursor.execute(query, (email,))
-    existing_user = cursor.fetchone()
-
-    if existing_user:
-        return jsonify({'message': 'Email sudah terdaftar'}), 409
-
-    # Mengenkripsi password sebelum disimpan
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-    # Menyimpan pengguna baru ke dalam database
-    insert_query = "INSERT INTO users (nama, email, password) VALUES (%s, %s, %s)"
-    cursor.execute(insert_query, (nama, email, hashed_password))
-    db.commit()
-
-    return jsonify({'message': 'Registrasi berhasil'}), 201
 
 if __name__ == '__main__':
     app.run(debug=True)
