@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 12:41 PM
+-- Generation Time: Jun 09, 2023 at 03:27 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,14 +24,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history-user`
+-- Table structure for table `history_user`
 --
 
-CREATE TABLE `history-user` (
-  `id` int(10) NOT NULL,
-  `link-gambar` varchar(255) NOT NULL,
-  `waktu` date NOT NULL,
-  `hasil-prediksi` varchar(255) NOT NULL
+CREATE TABLE `history_user` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `link_gambar` varchar(255) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `hasil_prediksi` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -49,14 +50,30 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `nama`, `alamat`, `email`, `password`) VALUES
+(1, 'Thoriq', 'Kendal Jawa Tengah', 'thoriqds.a@gmail.com', 'thoriq1234'),
+(2, 'thoriq1234', '', 'thord@gmail.com', 'thor1234'),
+(3, 'thoriq1234', '', 'thord@gmail.com', 'thor1234'),
+(4, 'thoriq1234', '', 'thord@gmail.com', 'thor1234'),
+(5, 'thoriq1234a', '', 'thord@gmail.com', 'thor1234'),
+(6, 'thoriq1234a', '', 'thord@gmail.com', 'thor1234aaaa'),
+(7, 'thoriq1234a', '', 'thord@gmail.com', 'thor1234aaaa'),
+(8, 'thoriq1234a', '', 'thord@gmail.com', 'thor1234aaaa'),
+(9, 'amdo', 'Jekardah', 'amdo@gmail.com', '$2b$12$OErwxif0r1aQiO4wkAdxY.N2t71DViNHuhsKjllg9ypTMDvUydugS');
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `history-user`
+-- Indexes for table `history_user`
 --
-ALTER TABLE `history-user`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `history_user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -69,16 +86,26 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `history-user`
+-- AUTO_INCREMENT for table `history_user`
 --
-ALTER TABLE `history-user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `history_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `history_user`
+--
+ALTER TABLE `history_user`
+  ADD CONSTRAINT `history_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
