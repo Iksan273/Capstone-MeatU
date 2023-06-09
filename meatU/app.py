@@ -82,5 +82,28 @@ def get_user(id):
         return jsonify(user_dict)
     else:
         return jsonify({'message': 'User not found'})
+
+@app.route('/users/<id>/history', methods=['GET'])
+def get_user_history(id):
+    cur = db.cursor()
+    cur.execute("SELECT * FROM history_user WHERE user_id = %s", (id,))
+    history = cur.fetchall()
+    cur.close()
+
+    if history:
+        history_list = []
+        for entry in history:
+            history_dict = {
+                'id': entry[0],
+                'user_id': entry[1],
+                'link_gambar': entry[2],
+                'tanggal': entry[3].strftime('%Y-%m-%d'),
+                'hasil_prediksi': entry[4]
+            }
+            history_list.append(history_dict)
+
+        return jsonify(history_list)
+    else:
+        return jsonify({'message': 'User history not found'})
 if __name__ == '__main__':
     app.run(debug=True)
