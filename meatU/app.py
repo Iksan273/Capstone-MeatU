@@ -14,56 +14,73 @@ db = pymysql.connect(
     password = MYSQL_PASSWORD,
     database =MYSQL_DB
 )
-
-#REGISTTTT
-@app.route('/register', methods=['POST'])
-def register():
-    data = request.get_json()
-    nama = data['nama']
-    email = data['email']
-    password = data['password']
-
-    # Mengecek apakah email sudah terdaftar
-    cursor = db.cursor()
-    query = "SELECT * FROM users WHERE email=%s"
-    cursor.execute(query, (email,))
-    existing_user = cursor.fetchone()
-
-    if existing_user:
-        return jsonify({'message': 'Email sudah terdaftar'}), 409
-    # enkripsi password sebelum disimpan
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-    # Menyimpan pengguna baru ke dalam database
-    insert_query = "INSERT INTO users (nama, email, password) VALUES (%s, %s, %s)"
-    cursor.execute(insert_query, (nama, email, hashed_password))
-    db.commit()
-
-    return jsonify({'message': 'Registrasi berhasil'}), 201
-
-#LOGINNNNN
 @app.route('/login', methods=['POST'])
 def login():
+    # Mendapatkan data login dari request
     data = request.get_json()
     email = data['email']
     password = data['password']
 
-    cursor = db.cursor()    
+    # Mengecek kecocokan email dan password di database
+    cur = db.cursor()
     query = "SELECT * FROM users WHERE email=%s AND password=%s"
-    cursor.execute(query, (email,))
-    user = cursor.fetchone()
+    cur.execute(query, (email, password))
+    user = cur.fetchone()
 
-    if user is None or not bcrypt.checkpw(password.encode('utf-8'), user[5].encode('utf-8')):
+    # Menangani hasil autentikasi
+    if user is None:
         return jsonify({'message': 'Email atau password salah'}), 401
-
-    user_data = {
+    else:
+        # Mengambil data pengguna yang berhasil login
+        user_data = {
         'id': user[0],
         'nama': user[1],
-        'no-hp': user[2],
-        'alamat': user[3],
-        'email': user[4]
+        'alamat': user[2],
+        'email': user[3]
     }
-    return jsonify(user_data), 200
+        return jsonify(user_data), 200
+@app.route('/register', methods=['POST'])
+def register():
+    # Get registration data from the request
+    data = request.get_json()
+    nama = data['nama']
+    alamat = data['alamat']
+    email = data['email']
+    password = data['password']
 
+    # Encrypt the password
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+    # Store the registration data in the database
+    cur = db.cursor()
+    cur.execute("INSERT INTO users (nama, alamat, email, password) VALUES (%s, %s, %s, %s)",
+    (nama, alamat, email, hashed_password))
+    db.commit()
+
+    # Build the response
+    response = {
+        'message': 'Registration successful',
+        'nama': nama,
+        'alamat':alamat,
+        'email': email
+    }
+    return jsonify(response), 201
+@app.route('/users/<id>', methods=['GET'])
+def get_user(id):
+    cur = db.cursor()
+    cur.execute("SELECT * FROM users WHERE id = %s", (id,))
+    user = cur.fetchone()
+    cur.close()
+
+    if user:
+        user_dict = {
+            'id': user[0],
+            'nama': user[1],
+            'alamat': user[2],
+            'email': user[3]
+        }
+        return jsonify(user_dict)
+    else:
+        return jsonify({'message': 'User not found'})
 if __name__ == '__main__':
     app.run(debug=True)
