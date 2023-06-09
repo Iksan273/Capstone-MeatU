@@ -3,16 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 import pymysql
 import bcrypt
 from flask_marshmallow import Marshmallow
-from config import MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 #configure connection Mysql
 db = pymysql.connect(
-    host = MYSQL_HOST,
-    user =  MYSQL_USER,
-    password = MYSQL_PASSWORD,
-    database =MYSQL_DB
+    host = 'localhost',
+    user =  'root',
+    password = '',
+    database = 'meatu'
 )
 @app.route('/login', methods=['POST'])
 def login():
