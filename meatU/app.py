@@ -13,31 +13,6 @@ db = pymysql.connect(
     password = '',
     database = 'meatu'
 )
-@app.route('/login', methods=['POST'])
-def login():
-    # Mendapatkan data login dari request
-    data = request.get_json()
-    email = data['email']
-    password = data['password']
-
-    # Mengecek kecocokan email dan password di database
-    cur = db.cursor()
-    query = "SELECT * FROM users WHERE email=%s AND password=%s"
-    cur.execute(query, (email, password))
-    user = cur.fetchone()
-
-    # Menangani hasil autentikasi
-    if user is None:
-        return jsonify({'message': 'Email atau password salah'}), 401
-    else:
-        # Mengambil data pengguna yang berhasil login
-        user_data = {
-        'id': user[0],
-        'nama': user[1],
-        'alamat': user[2],
-        'email': user[3]
-    }
-        return jsonify(user_data), 200
 @app.route('/register', methods=['POST'])
 def register():
     # Get registration data from the request
@@ -64,6 +39,38 @@ def register():
         'email': email
     }
     return jsonify(response), 201
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    # Mendapatkan data login dari request
+    data = request.get_json()
+    email = data['email']
+    password = data['password']
+
+    # Mengecek kecocokan email dan password di database
+    cur = db.cursor()
+    query = "SELECT * FROM users WHERE email=%s"
+    cur.execute(query, (email,))
+    user = cur.fetchone()
+
+
+    # Menangani hasil autentikasi
+    if user is None:
+        return jsonify({'message': 'Email atau password salah'}), 401
+    hashed_password = user[4]
+    if bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8')):
+        # Mengambil data pengguna yang berhasil login
+        user_data = {
+        'id': user[0],
+        'nama': user[1],
+        'alamat': user[2],
+        'email': user[3]
+    }
+        return jsonify({'message':'Login berhasil'}, user_data), 200
+    else:
+        return jsonify({'message': 'Email atau password salah'}), 401
+
 @app.route('/users/<id>', methods=['GET'])
 def get_user(id):
     cur = db.cursor()
