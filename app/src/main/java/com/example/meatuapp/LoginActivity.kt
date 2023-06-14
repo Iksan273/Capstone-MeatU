@@ -22,10 +22,18 @@ class LoginActivity : AppCompatActivity() {
         binding.ivLogo.setImageResource(R.drawable.logo)
         val userFactory = UserViewModelFactory.getInstance(this)
         val loginViewModel = ViewModelProvider(this, userFactory)[LoginViewModel::class.java]
+        loginViewModel.getUser().observe(this) { userLogin ->
+            if (userLogin.nama.isNotEmpty()) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
         binding.tvRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
 
         binding.btnLogin.setOnClickListener {
             var email = binding.etEmail.text.toString()

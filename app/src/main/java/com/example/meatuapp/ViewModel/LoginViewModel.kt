@@ -8,5 +8,6 @@ class LoginViewModel (private val userRepository: UserRepository)
     fun loginUser( email: String, password: String) =
         userRepository.loginUser(email, password)
     fun getUser() = userRepository.getUser()
+    fun deleteUser()=userRepository.deleteUser()
 
 }
