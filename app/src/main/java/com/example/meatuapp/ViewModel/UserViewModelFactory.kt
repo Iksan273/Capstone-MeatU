@@ -16,6 +16,9 @@ class UserViewModelFactory private constructor(
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(userRepository) as T
             }
+            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                LoginViewModel(userRepository) as T
+            }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

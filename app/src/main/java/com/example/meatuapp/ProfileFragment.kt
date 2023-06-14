@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.meatuapp.ViewModel.LoginViewModel
+import com.example.meatuapp.ViewModel.UserViewModelFactory
 import com.example.meatuapp.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -30,6 +32,17 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val userFactory = UserViewModelFactory.getInstance(requireActivity().application)
+        val loginViewModel = ViewModelProvider(this, userFactory)[LoginViewModel::class.java]
+
+
+
+        loginViewModel.getUser().observe(viewLifecycleOwner) { userLogin ->
+            if (userLogin.nama.isNotEmpty()) {
+                binding.txtName.setText(userLogin.nama)
+                binding.txtUsername.setText(userLogin.email)
+            }
+        }
 
         return root
     }

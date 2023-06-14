@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.meatuapp.Data.JenisDaging
+import com.example.meatuapp.ViewModel.LoginViewModel
+import com.example.meatuapp.ViewModel.UserViewModelFactory
 import com.example.meatuapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -26,6 +28,16 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val userFactory = UserViewModelFactory.getInstance(requireActivity().application)
+        val loginViewModel = ViewModelProvider(this, userFactory)[LoginViewModel::class.java]
+
+
+
+        loginViewModel.getUser().observe(viewLifecycleOwner) { userLogin ->
+            if (userLogin.nama.isNotEmpty()) {
+                binding.txtName.setText(userLogin.nama)
+            }
+        }
         binding.card2.setOnClickListener {
             val intent = Intent(requireContext(), CiriDagingActivity::class.java)
             startActivity(intent)

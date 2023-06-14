@@ -15,8 +15,8 @@ object Injection {
         return CiriDagingRepository.getInstance()
     }
     fun UserAuthRepository(context: Context): UserRepository {
-
-        val userRemote = UserAuth.getInstance()
-        return UserRepository.getInstance(userRemote)
+        val sharedPreferences = sharedPreferences.getInstance(context)
+        val userRemote = UserAuth.getInstance(sharedPreferences)
+        return UserRepository.getInstance(userRemote,sharedPreferences)
     }
 }
