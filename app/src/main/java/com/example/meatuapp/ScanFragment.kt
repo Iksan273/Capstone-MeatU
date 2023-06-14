@@ -100,7 +100,7 @@ class ScanFragment : Fragment() {
                             intent.putExtra("prediction", response.predict)
                             intent.putExtra("imagePath", myfile?.absolutePath)
                             startActivity(intent)
-                            requireActivity().finish()
+//                            requireActivity().finish()
                         } else {
                             binding.progressBar.isVisible = false
                             Toast.makeText(
