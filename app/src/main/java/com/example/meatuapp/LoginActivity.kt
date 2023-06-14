@@ -19,12 +19,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.ivLogo.setImageResource(R.drawable.logo)
         val userFactory = UserViewModelFactory.getInstance(this)
         val loginViewModel = ViewModelProvider(this, userFactory)[LoginViewModel::class.java]
         binding.tvRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-
         }
 
         binding.btnLogin.setOnClickListener {

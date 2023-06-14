@@ -20,8 +20,10 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         val userFactory = UserViewModelFactory.getInstance(this)
         val registerViewModel = ViewModelProvider(this, userFactory)[RegisterViewModel::class.java]
-
-
+        binding.tvLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnRegister.setOnClickListener {
 
