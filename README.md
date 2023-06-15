@@ -18,6 +18,10 @@ Di Indonesia, masalah pemalsuan daging masih tersebar luas, dengan penjual secar
 - Informasi seputar daging
 - Login dan register
 
+## API Docs
+Untuk API docs, bisa cek disini:
+[Klik Disini]([https://github.com/Iksan273](https://ikhwans-organization.gitbook.io/api-docs-capstone-jaya/))
+
 ## Our Team
 
 - [@Iksan273](https://github.com/Iksan273)
