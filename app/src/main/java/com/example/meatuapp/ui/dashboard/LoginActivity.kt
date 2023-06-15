@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.ivLogo.setImageResource(R.drawable.logo)
+//        binding.ivLogo.setImageResource(R.drawable.logo)
         val userFactory = UserViewModelFactory.getInstance(this)
         val loginViewModel = ViewModelProvider(this, userFactory)[LoginViewModel::class.java]
         loginViewModel.getUser().observe(this) { userLogin ->
