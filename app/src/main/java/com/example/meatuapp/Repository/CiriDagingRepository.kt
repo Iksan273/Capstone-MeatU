@@ -2,8 +2,7 @@ package com.example.meatuapp.Repository
 
 import com.example.meatuapp.Data.CiriDaging
 import com.example.meatuapp.Data.CiriDagingData
-import com.example.meatuapp.Data.JenisDaging
-import com.example.meatuapp.Data.JenisDagingData
+
 
 class CiriDagingRepository {
     private val CiriDagingList= mutableListOf<CiriDaging>()

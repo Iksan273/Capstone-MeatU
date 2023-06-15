@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 private const val FILENAME_FORMAT = "dd-MMM-yyyy"
-private const val MAXIMAL_SIZE = 5000000
+private const val MAXIMAL_SIZE = 1000000
 
 val timeStamp: String = SimpleDateFormat(
     FILENAME_FORMAT,
@@ -35,24 +35,45 @@ fun uriToFile(selectedImg: Uri, context: Context): File {
     val outputStream: OutputStream = FileOutputStream(myFile)
     val buf = ByteArray(1024)
     var len: Int
-    while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-    outputStream.close()
-    inputStream.close()
+    try {
+        while (inputStream.read(buf).also { len = it } > 0) {
+            outputStream.write(buf, 0, len)
+        }
+    } finally {
+        outputStream.close()
+        inputStream.close()
+    }
 
     return myFile
 }
 
 fun reduceFileImage(file: File): File {
-    val bitmap = BitmapFactory.decodeFile(file.path)
-    var compressQuality = 100
-    var streamLength: Int
-    do {
-        val bmpStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, bmpStream)
-        val bmpPicByteArray = bmpStream.toByteArray()
-        streamLength = bmpPicByteArray.size
-        compressQuality -= 5
-    } while (streamLength > MAXIMAL_SIZE)
-    bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
+    val options = BitmapFactory.Options()
+    options.inJustDecodeBounds = true
+    BitmapFactory.decodeFile(file.path, options)
+
+    options.inSampleSize = calculateInSampleSize(options, 800, 800) // Atur ukuran tampilan yang diinginkan
+    options.inJustDecodeBounds = false
+
+    val bitmap = BitmapFactory.decodeFile(file.path, options)
+    val outputStream = FileOutputStream(file)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream)
+    outputStream.close()
+    bitmap.recycle()
+
     return file
+}
+
+private fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+    val height = options.outHeight
+    val width = options.outWidth
+    var inSampleSize = 1
+
+    if (height > reqHeight || width > reqWidth) {
+        val heightRatio = Math.round(height.toFloat() / reqHeight.toFloat())
+        val widthRatio = Math.round(width.toFloat() / reqWidth.toFloat())
+        inSampleSize = if (heightRatio < widthRatio) heightRatio else widthRatio
+    }
+
+    return inSampleSize
 }

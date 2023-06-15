@@ -1,13 +1,11 @@
 package com.example.meatuapp
 
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.meatuapp.databinding.ActivityLoginBinding
+import com.bumptech.glide.Glide
 import com.example.meatuapp.databinding.ActivityPredictBinding
 import java.io.File
-import kotlin.math.log
 
 class PredictActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPredictBinding
@@ -20,11 +18,11 @@ class PredictActivity : AppCompatActivity() {
         val imagePath = intent.getStringExtra("imagePath")
         Log.d("image", imagePath.toString())
         if (imagePath != null) {
-            val file = File(imagePath)
-            val bitmap = BitmapFactory.decodeFile(file.absolutePath)
-            binding.imageView2.setImageBitmap(bitmap)
+            Glide.with(this)
+                .load(File(imagePath))
+                .into(binding.imageView2)
         }
 
-        binding.txtHasil.setText(prediction.toString())
+        binding.txtHasil.text = prediction.toString()
     }
 }

@@ -3,7 +3,6 @@ package com.example.meatuapp
 import android.Manifest
 import android.app.Activity
 import android.app.Activity.RESULT_OK
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -17,16 +16,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
-import com.example.meatuapp.ViewModel.LoginViewModel
 import com.example.meatuapp.ViewModel.PredictViewModel
 import com.example.meatuapp.ViewModel.PredictViewModelFactory
-import com.example.meatuapp.ViewModel.UserViewModelFactory
 import com.example.meatuapp.databinding.FragmentScanBinding
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -100,7 +96,6 @@ class ScanFragment : Fragment() {
                             intent.putExtra("prediction", response.predict)
                             intent.putExtra("imagePath", myfile?.absolutePath)
                             startActivity(intent)
-//                            requireActivity().finish()
                         } else {
                             binding.progressBar.isVisible = false
                             Toast.makeText(
@@ -134,7 +129,7 @@ class ScanFragment : Fragment() {
     private val launcherIntentCamera = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
+        if (result.resultCode == RESULT_OK) {
             val data: Intent? = result.data
             val myFile = File(path)
 

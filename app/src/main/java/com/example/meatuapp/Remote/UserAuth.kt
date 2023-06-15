@@ -1,20 +1,16 @@
 package com.example.meatuapp.Remote
 
-import android.content.SharedPreferences
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.meatuapp.API.ApiConfig
 import com.example.meatuapp.Response.LoginResponse
-
 import com.example.meatuapp.Response.RegisterResponse
 import com.example.meatuapp.sharedPreferences
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-
-
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
