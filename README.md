@@ -1,3 +1,5 @@
+![Logo](https://storage.googleapis.com/bucket-mlmodel-api/logobaru4.png)
+
 # 🥩 Capstone-MeatU
 Di Indonesia, masalah pemalsuan daging masih tersebar luas, dengan penjual secara ilegal menjual daging palsu, salah memberi label, atau mencampur berbagai jenis daging untuk keuntungan yang lebih tinggi. Banyak pelanggan kurang pengetahuan tentang jenis daging dan kesegaran di pasar. Untuk mengatasi hal ini, kami sedang mengembangkan "MeatU," sebuah aplikasi yang menggunakan pembelajaran mesin untuk mengklasifikasikan jenis daging dan menilai kesegaran. Kami memperoleh dataset klasifikasi daging dari data laboratorium kampus dan dataset kesegaran daging dari Kaggle. Dengan menggunakan kamera ponsel, pengguna dapat menangkap gambar daging, yang akan diproses untuk menentukan jenis dan kesegaran daging. Fitur "MeatU" termasuk jenis daging, peringkat kesegaran, dan daftar pemasok daging terpercaya.
 
