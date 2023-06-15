@@ -51,13 +51,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.btnLogout.setOnClickListener {
-            loginViewModel.deleteUser()
-            val intent = Intent(requireActivity(), LoginActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        }
-
 
         return root
 

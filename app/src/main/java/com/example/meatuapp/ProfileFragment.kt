@@ -1,5 +1,6 @@
 package com.example.meatuapp
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -35,13 +36,18 @@ class ProfileFragment : Fragment() {
         val userFactory = UserViewModelFactory.getInstance(requireActivity().application)
         val loginViewModel = ViewModelProvider(this, userFactory)[LoginViewModel::class.java]
 
-
-
         loginViewModel.getUser().observe(viewLifecycleOwner) { userLogin ->
             if (userLogin.nama.isNotEmpty()) {
                 binding.txtName.setText(userLogin.nama)
                 binding.txtUsername.setText(userLogin.email)
             }
+        }
+
+        binding.btnLogout.setOnClickListener {
+            loginViewModel.deleteUser()
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
 
         return root
