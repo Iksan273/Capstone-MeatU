@@ -30,4 +30,4 @@ Untuk API docs, bisa cek [disini](https://ikhwans-organization.gitbook.io/api-do
 - [@ikhwannz](https://github.com/ikhwannz)
 - [@Thorxds](https://github.com/Thorxds)
 - [@charisa](https://www.github.com/tes)
-- [@amanda](https://github.com/maaans)
+- [@maaans](https://github.com/maaans)
