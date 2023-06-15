@@ -1,13 +1,13 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.meatuapp.Adapter.JenisDagingAdapter
 import com.example.meatuapp.Data.JenisDaging
+import com.example.meatuapp.R
 import com.example.meatuapp.ViewModel.DagingViewModel
 import com.example.meatuapp.ViewModel.DagingViewModelFactory
 import com.example.meatuapp.databinding.ActivityJenisDagingBinding

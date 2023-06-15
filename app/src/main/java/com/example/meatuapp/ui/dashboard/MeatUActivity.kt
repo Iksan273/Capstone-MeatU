@@ -1,7 +1,8 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.meatuapp.R
 
 class MeatUActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

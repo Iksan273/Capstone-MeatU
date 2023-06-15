@@ -1,4 +1,4 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import com.example.meatuapp.R
 import com.example.meatuapp.Response.LoginResponse
 import com.example.meatuapp.ViewModel.LoginViewModel
 import com.example.meatuapp.ViewModel.UserViewModelFactory

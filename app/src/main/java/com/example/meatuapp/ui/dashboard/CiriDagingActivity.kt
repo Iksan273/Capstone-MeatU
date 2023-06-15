@@ -1,4 +1,4 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.meatuapp.Adapter.CiriDagingAdapter
-import com.example.meatuapp.Adapter.JenisDagingAdapter
 import com.example.meatuapp.Data.CiriDaging
-import com.example.meatuapp.Data.JenisDaging
+import com.example.meatuapp.R
 import com.example.meatuapp.ViewModel.CiriDagingViewModel
 import com.example.meatuapp.ViewModel.CiriDagingViewModelFactory
 

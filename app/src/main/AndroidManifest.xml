@@ -17,33 +17,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeatUApp"
         tools:targetApi="31">
-        <activity
-            android:name=".Activity_Detail_Riwayat"
-            android:exported="false" />
 
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.dashboard.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.dashboard.LoginActivity"
             android:exported="false" />
 
 
         <activity
-            android:name=".CiriDagingActivity"
+            android:name=".ui.dashboard.CiriDagingActivity"
             android:exported="false" />
 
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.dashboard.MainActivity"
             android:exported="false"/>
 
 
         <activity
-            android:name=".MeatUActivity"
+            android:name=".ui.dashboard.MeatUActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".ui.dashboard.SplashScreen"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -62,10 +59,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
-            android:name=".PredictActivity"
+            android:name=".ui.dashboard.PredictActivity"
             android:exported="false" />
         <activity
-            android:name=".JenisDagingActivity"
+            android:name=".ui.dashboard.JenisDagingActivity"
             android:exported="false" />
     </application>
 

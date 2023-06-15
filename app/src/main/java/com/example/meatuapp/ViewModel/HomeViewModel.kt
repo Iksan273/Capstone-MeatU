@@ -1,4 +1,4 @@
-package com.example.meatuapp
+package com.example.meatuapp.ViewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

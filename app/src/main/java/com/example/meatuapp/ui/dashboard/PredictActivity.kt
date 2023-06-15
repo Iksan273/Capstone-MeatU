@@ -1,9 +1,10 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.bumptech.glide.Glide
+import com.example.meatuapp.R
 import com.example.meatuapp.databinding.ActivityPredictBinding
 import java.io.File
 

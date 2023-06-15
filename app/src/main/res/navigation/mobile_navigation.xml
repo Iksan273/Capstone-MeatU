@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.meatuapp.HomeFragment"
+        android:name="com.example.meatuapp.ui.dashboard.HomeFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="com.example.meatuapp.ScanFragment"
+        android:name="com.example.meatuapp.ui.dashboard.ScanFragment"
         tools:layout="@layout/fragment_scan" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.meatuapp.ProfileFragment"
+        android:name="com.example.meatuapp.ui.dashboard.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,8 +1,9 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.meatuapp.R
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

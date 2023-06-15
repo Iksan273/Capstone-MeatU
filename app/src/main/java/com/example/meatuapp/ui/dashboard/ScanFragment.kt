@@ -1,7 +1,6 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import android.Manifest
-import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -21,9 +20,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.example.meatuapp.ViewModel.ScanViewModel
 import com.example.meatuapp.ViewModel.PredictViewModel
 import com.example.meatuapp.ViewModel.PredictViewModelFactory
 import com.example.meatuapp.databinding.FragmentScanBinding
+import com.example.meatuapp.reduceFileImage
+import com.example.meatuapp.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -39,7 +41,6 @@ class ScanFragment : Fragment() {
         fun newInstance() = ProfileFragment()
     }
 
-    private lateinit var viewModel: ScanViewModel
 
     private var _binding: FragmentScanBinding? = null
 
@@ -88,10 +89,9 @@ class ScanFragment : Fragment() {
                             binding.progressBar.isVisible = false
                             Toast.makeText(
                                 requireContext(),
-                                "Gambar Sedang dalam proses!",
+                                "Gambar berhasil di analyze!",
                                 Toast.LENGTH_SHORT
                             ).show()
-//                            myfile = null
                             val intent = Intent(requireContext(), PredictActivity::class.java)
                             intent.putExtra("prediction", response.predict)
                             intent.putExtra("imagePath", myfile?.absolutePath)
@@ -146,7 +146,7 @@ class ScanFragment : Fragment() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.resolveActivity(requireContext().packageManager)
 
-        createTempFile(requireContext().applicationContext).also { file ->
+        com.example.meatuapp.createTempFile(requireContext().applicationContext).also { file ->
             val photoURI: Uri = FileProvider.getUriForFile(
                 requireContext(),
                 "com.example.meatuapp.mycamera",

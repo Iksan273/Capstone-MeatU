@@ -1,4 +1,4 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +17,7 @@ class ProfileFragment : Fragment() {
         fun newInstance() = ProfileFragment()
     }
 
-    private lateinit var viewModel: ProfileViewModel
+
 
     private var _binding: FragmentProfileBinding? = null
 
@@ -28,8 +28,7 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val profileViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
+
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root

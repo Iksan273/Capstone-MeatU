@@ -1,7 +1,7 @@
-package com.example.meatuapp
+package com.example.meatuapp.ViewModel
 
 import androidx.lifecycle.ViewModel
 
-class ProfileViewModel : ViewModel() {
+class ScanViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

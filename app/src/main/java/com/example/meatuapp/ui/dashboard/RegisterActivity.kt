@@ -1,4 +1,4 @@
-package com.example.meatuapp
+package com.example.meatuapp.ui.dashboard
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import com.example.meatuapp.R
 import com.example.meatuapp.ViewModel.RegisterViewModel
 import com.example.meatuapp.ViewModel.UserViewModelFactory
 import com.example.meatuapp.databinding.ActivityRegisterBinding
