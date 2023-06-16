@@ -23,11 +23,11 @@ Di Indonesia, masalah pemalsuan daging masih tersebar luas, dengan penjual secar
 ## Documentation API
 Untuk API docs, bisa cek [disini](https://ikhwans-organization.gitbook.io/api-docs-capstone-jaya/)
 
-## Our Team
+## Credit to Our Team
 
 - [@Iksan273](https://github.com/Iksan273)
 - [@Rein30S](https://github.com/Rein30S)
 - [@ikhwannz](https://github.com/ikhwannz)
 - [@Thorxds](https://github.com/Thorxds)
-- [@charisa](https://www.github.com/tes)
+- [@charisahera](https://github.com/charisahera)
 - [@maaans](https://github.com/maaans)
